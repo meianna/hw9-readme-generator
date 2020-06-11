@@ -20,8 +20,8 @@ function init() {
       .then(function (response) {
         console.log(response);
         var readMe = `
-#username: ${response.data.login}
-[link to github profile!](${response.data.url})
+# Username: ${response.data.login}
+[link to github profile!](${response.data.html_url})
         `;
         return readMe;
       })
