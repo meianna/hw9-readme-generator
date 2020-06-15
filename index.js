@@ -1,8 +1,6 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
 const fs = require("fs");
-const util = require("util");
-const { userInfo } = require("os");
 let userInput = {};
 
 const questions = [
@@ -48,14 +46,12 @@ const questions = [
     message: "Please choose a license",
   },
   {
-    type: "input",
+    type: "list",
     name: "test",
     choices: ["manual", "none", "chai", "mocha", "jest"],
     message: "How would you like to test the app?",
   },
 ];
-
-function writeToFile(fileName, data) {}
 
 function init() {
   inquirer.prompt(questions).then(function (response) {
@@ -66,19 +62,19 @@ function init() {
       .then(function (axiosResponse) {
         console.log(axiosResponse.data);
         let readMe = `
-        # Username: ${axiosResponse.data.login}
-        [link to github profile!](${axiosResponse.data.html_url})
-        /n# Email: ${userInput.email}
-        /n![GitHub license](https://img.shields.io/badge/license-${userInput.license}-blue.svg)
-        /nProject | Details
-        /n------- | -------
-        /nProject Title | ${userInput.title}
-        /nDescription | ${userInput.description}
-        /nInstallation | ${userInput.install} 
-        /nTesting | ${userInput.test}
-        /nContributing | ${userInput.contributing}
-        /nLicense | ${userInput.license}
-        `;
+# Username: ${axiosResponse.data.login}
+[link to github profile!](${axiosResponse.data.html_url})
+## Email: ${userInput.email}
+![GitHub license](https://img.shields.io/badge/license-${userInput.license}-blue.svg)
+Project | Details
+------- | -------
+Project Title | ${userInput.title}
+Description | ${userInput.description}
+Installation | ${userInput.install} 
+Testing | ${userInput.test}
+Contributing | ${userInput.contributing}
+License | ${userInput.license}
+`;
         return readMe;
       })
       .then(function (data) {
