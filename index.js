@@ -79,7 +79,7 @@ ${userInput.install}
 ${userInput.usage}
 ## License
 ${userInput.license}
-## Contribution 
+## Contributions
 ${userInput.contribute}
 ## Tests
 ${userInput.tests}
@@ -91,7 +91,7 @@ You can contact me at ${userInput.email} and visit my GitHub profile [here](${ax
       .then(function (data) {
         fs.writeFileSync("./README.md", data, function (error) {
           if (error) throw error;
-          console.log("ReadMe generated!");
+          console.log("README generated!");
         });
       });
   });
