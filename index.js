@@ -7,7 +7,7 @@ const questions = [
   {
     type: "input",
     name: "username",
-    message: "Enter Github username",
+    message: "Enter your GitHub username",
   },
   {
     type: "input",
@@ -17,39 +17,39 @@ const questions = [
   {
     type: "input",
     name: "title",
-    message: "What is the title of your project?",
+    message: "Enter the title of your project",
   },
   {
     type: "input",
     name: "description",
-    message: "Please describe your project",
+    message: "Describe your project",
   },
   {
     type: "input",
     name: "install",
-    message: "Please provide installation instructons",
+    message: "Provide installation instructons",
   },
   {
     type: "input",
     name: "usage",
-    message: "Please explain how others can use your code",
+    message: "Explain how others can use your code",
   },
   {
     type: "input",
-    name: "contributing",
-    message: "Who helped contribute to this code?",
+    name: "contribute",
+    message: "Any contributors to credit? List them here",
   },
   {
     type: "list",
     name: "license",
-    choices: ["MIT", "ISC", "APACHE 2.0"],
-    message: "Please choose a license",
+    choices: ["MIT", "ISC", "Apache 2.0", "None"],
+    message: "Choose a license",
   },
   {
     type: "list",
-    name: "test",
-    choices: ["manual", "none", "chai", "mocha", "jest"],
-    message: "How would you like to test the app?",
+    name: "tests",
+    choices: ["Manual", "Chai", "Mocha", "Jest", "None"],
+    message: "What tests would you run?",
   },
 ];
 
@@ -62,18 +62,29 @@ function init() {
       .then(function (axiosResponse) {
         console.log(axiosResponse.data);
         let readMe = `
-# Username: ${axiosResponse.data.login}
-[link to github profile!](${axiosResponse.data.html_url})
-## Email: ${userInput.email}
-![GitHub license](https://img.shields.io/badge/license-${userInput.license}-blue.svg)
-Project | Details
-------- | -------
-Project Title | ${userInput.title}
-Description | ${userInput.description}
-Installation | ${userInput.install} 
-Testing | ${userInput.test}
-Contributing | ${userInput.contributing}
-License | ${userInput.license}
+
+# ${userInput.title} ![GitHub license](https://img.shields.io/badge/license-${userInput.license}-blue.svg)
+## Description
+${userInput.description}
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contribution](#contribution)
+- [Tests](#tests)
+- [Questions](#questions)
+## Installation 
+${userInput.install}
+## Usage 
+${userInput.usage}
+## License
+${userInput.license}
+## Contribution 
+${userInput.contribute}
+## Tests
+${userInput.tests}
+## Questions?
+You can contact me at ${userInput.email} and visit my GitHub profile [here](${axiosResponse.data.html_url}).
 `;
         return readMe;
       })
