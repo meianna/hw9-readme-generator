@@ -92,7 +92,6 @@ You can contact me at ${userInput.email} and visit my GitHub profile [here](${ax
       .then(function (data) {
         fs.writeFileSync("./README.md", data, function (error) {
           if (error) throw error;
-          console.log("README generated!");
         });
       });
   });
