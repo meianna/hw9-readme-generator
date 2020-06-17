@@ -63,7 +63,8 @@ function init() {
         console.log(axiosResponse.data);
         let readMe = `
 
-# ${userInput.title} ![GitHub license](https://img.shields.io/badge/license-${userInput.license}-blue.svg)
+# ${userInput.title}
+![GitHub license](https://img.shields.io/badge/license-${userInput.license}-blue.svg) 
 ## Description
 ${userInput.description}
 ## Table of Contents
